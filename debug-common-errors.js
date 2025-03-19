@@ -1,22 +1,4 @@
-/*
 
-Overview
-In this activity, you will receive three short JavaScript programs,
-each containing a different type of error (syntax, runtime, and logic)
-along with a brief explanation of what the program is supposed to do.
-Your task is to identify the error, correct it, and verify the fix.
-
-Instructions
-Debugging Steps:
-  - Identify the error type (syntax, runtime, or logic).
-  - Use Debugging Techniques such as reading error messages, using console.log(), or testing in small steps.
-  - Propose a Fix that addresses the error.
-  - Verify the Solution by running the code again to ensure the program works as intended.
-
-Reflection:
-Think about which debugging methods you found most useful and how you might apply them in future projects.
-
-*/
 
 // Programs and Solutions
 
@@ -24,22 +6,38 @@ Think about which debugging methods you found most useful and how you might appl
 // Description:
 // This program is intended to display a simple prompt in the console but fails to run.
 
-console.log("Welcome to the bootcamp
-
-// What’s Wrong?
+    
+console.log("Welcome to the bootcamp");
+// Error type was syntax error : Invalid or unexpected token.
+//console.log statement is missing a closing parenthesis ')'.
+//Correct the syntax by adding the missing ')'
 
 
 // Program B
 // Description:
 // This code attempts to multiply each number in an array by 2 and display the results. However, it crashes at runtime.
 
-let numbers = [2, 4, "eight"];
-for (let i = 0; i < numbers.length; i++) {
-  let doubled = numbers[i] * 2;
-  console.log(doubled);
-}
 
-// What’s Wrong?
+let numbers = [2, 4, 'eight'];
+for (let i = 0; i < numbers.length; i++) {
+ 
+    if (typeof numbers[i]=== 'number') {
+        let doubled = numbers[i] * 2;
+        console.log(doubled);
+    }
+}
+  
+
+
+//This code contains a runtime error due to attempting to multiply a string ("eight") by 2.
+//When JavaScript tries to evaluate "eight" * 2, it results in NaN (Not a Number).
+
+//The issue can be confirmed by running the code and checking the console output.
+//Adding a console.log(typeof numbers[i]) before the multiplication can help identify the data type of each element.
+
+//Ensure all array elements are numbers before performing arithmetic.
+//Use type checking to skip non-numeric values.
+
 
 
 
@@ -51,12 +49,16 @@ function isPrime(num) {
   if (num < 2) return false;
   for (let i = 2; i < num; i++) {
     if (num % i === 0) {
-      return true;  // Supposed to indicate num is NOT prime
+      return false;  
     }
   }
-  return false; // Supposed to indicate num IS prime
+  return true; 
 }
 
 console.log(isPrime(7)); // Expected true but gets false
 
 // What’s Wrong?
+//This is a logic error because the function is returning the wrong boolean values for prime numbers.
+//If a number is divisible by any i from 2 to num - 1, it means the number is not prime.
+//Instead of returning true, it should return false.
+//Swap the true and false return values.
